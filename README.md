@@ -22,3 +22,12 @@ docker run -p 8000:8000 bookstore
 ```
 
 A API fica em http://localhost:8000/bookstore/v1/products/
+
+## Docker Compose (Django + Postgres)
+
+```bash
+docker compose up -d --build
+docker compose exec web python manage.py test
+```
+
+As variáveis de desenvolvimento ficam em `env.dev`.
