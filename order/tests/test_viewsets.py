@@ -17,7 +17,7 @@ class OrderViewSetTest(APITestCase):
         response = self.client.get(reverse("order-list"))
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        order = response.json()[0]
+        order = response.json()["results"][0]
         self.assertEqual(order["product"][0]["title"], "Dom Casmurro")
         self.assertEqual(order["total"], 30)
 
