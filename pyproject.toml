@@ -1,0 +1,19 @@
+[tool.poetry]
+package-mode = false
+
+[project]
+name = "bookstore"
+version = "0.1.0"
+description = "Bookstore API (EBAC)"
+authors = [
+    {name = "Adryan Szenczuk",email = "adryanszenczuk@gmail.com"}
+]
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "django (>=5.2,<6.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
