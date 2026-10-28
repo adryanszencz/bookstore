@@ -14,7 +14,7 @@ class CategoryViewSetTest(APITestCase):
         response = self.client.get(reverse("category-list"))
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.json()[0]["title"], "Romance")
+        self.assertEqual(response.json()["results"][0]["title"], "Romance")
 
     def test_cria_categoria(self):
         response = self.client.post(reverse("category-list"), {"title": "Terror", "slug": "terror"}, format="json")
@@ -44,7 +44,7 @@ class ProductViewSetTest(APITestCase):
         response = self.client.get(reverse("product-list"))
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        product = response.json()[0]
+        product = response.json()["results"][0]
         self.assertEqual(product["title"], "Python Fluente")
         self.assertEqual(product["category"][0]["slug"], "tecnologia")
 

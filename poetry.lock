@@ -38,6 +38,22 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-debug-toolbar"
+version = "8.0.0"
+description = "A configurable set of panels that display various debug information about the current request/response."
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "django_debug_toolbar-8.0.0-py3-none-any.whl", hash = "sha256:329dfd6e1c26d9b4501a5cc69294c8bb734206ccb1bd36e96afc4d14128b630a"},
+    {file = "django_debug_toolbar-8.0.0.tar.gz", hash = "sha256:cae32d3e441e608f39f3f1ca6b3f028c38d5d04d74c98d8ab96d46022dee3163"},
+]
+
+[package.dependencies]
+django = ">=5.2"
+sqlparse = ">=0.2"
+
+[[package]]
 name = "djangorestframework"
 version = "3.18.3"
 description = "Web APIs for Django, made easy."
@@ -122,4 +138,4 @@ markers = {main = "sys_platform == \"win32\"", dev = "platform_system == \"Windo
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<4.0"
-content-hash = "9f9532ab18e1a8b8a8fbf4134c8f1b9e1cf6955e28217f703623282c81d14e52"
+content-hash = "2a8890cca716994222cf29b8bc3d2b9e4d9b6502aece983fcdc06e41b068c87f"
