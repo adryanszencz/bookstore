@@ -38,3 +38,17 @@ As variáveis de desenvolvimento ficam em `env.dev`.
 
 - `build.yml`: em todo push na main e em todo PR, instala com Poetry, checa as migrações e roda os testes contra um Postgres.
 - `code-review.yml`: em todo PR, o flake8 (via reviewdog) comenta no próprio PR as linhas fora do padrão.
+
+## Deploy no PythonAnywhere
+
+Publicado em https://adryanszencz.pythonanywhere.com/bookstore/v1/products/
+
+No console Bash do PythonAnywhere:
+
+```bash
+git clone https://github.com/adryanszencz/bookstore.git
+cd bookstore
+python3.12 -m venv env && source env/bin/activate
+pip install poetry && poetry config virtualenvs.create false && poetry install --no-root
+python manage.py migrate && python manage.py collectstatic --noinput
+```
