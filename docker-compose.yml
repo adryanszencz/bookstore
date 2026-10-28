@@ -12,6 +12,8 @@ services:
       interval: 2s
       timeout: 5s
       retries: 15
+    networks:
+      - bookstore-network
 
   web:
     build: .
@@ -25,6 +27,13 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - bookstore-network
 
 volumes:
   postgres_data:
+
+# rede explícita (bridge) para o web conversar com o db pelo nome do serviço
+networks:
+  bookstore-network:
+    driver: bridge
