@@ -13,3 +13,12 @@ poetry run python manage.py runserver
 ```
 
 Testes: `poetry run python manage.py test`
+
+## Docker
+
+```bash
+docker build -t bookstore .
+docker run -p 8000:8000 bookstore
+```
+
+A API fica em http://localhost:8000/bookstore/v1/products/
