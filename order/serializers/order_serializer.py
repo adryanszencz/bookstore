@@ -15,6 +15,7 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ["id", "product", "products_id", "user", "total"]
+        read_only_fields = ["user"]
 
     def get_total(self, instance):
         return sum(product.price or 0 for product in instance.product.all())
