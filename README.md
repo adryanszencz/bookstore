@@ -1,5 +1,7 @@
 # bookstore
 
+[![Build e testes](https://github.com/adryanszencz/bookstore/actions/workflows/build.yml/badge.svg)](https://github.com/adryanszencz/bookstore/actions/workflows/build.yml)
+
 API de uma livraria feita com Django e Django REST Framework, no curso Profissão: Desenvolvedor Full Stack Python da EBAC.
 
 **Autor:** Adryan Szenczuk
@@ -31,3 +33,8 @@ docker compose exec web python manage.py test
 ```
 
 As variáveis de desenvolvimento ficam em `env.dev`.
+
+## Integração contínua (GitHub Actions)
+
+- `build.yml`: em todo push na main e em todo PR, instala com Poetry, checa as migrações e roda os testes contra um Postgres.
+- `code-review.yml`: em todo PR, o flake8 (via reviewdog) comenta no próprio PR as linhas fora do padrão.

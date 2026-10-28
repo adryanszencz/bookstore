@@ -1,0 +1,54 @@
+name: Build e testes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: dev
+          POSTGRES_PASSWORD: dev
+          POSTGRES_DB: bookstore_dev_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U dev -d bookstore_dev_db"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      SQL_ENGINE: django.db.backends.postgresql
+      SQL_DATABASE: bookstore_dev_db
+      SQL_USER: dev
+      SQL_PASSWORD: dev
+      SQL_HOST: localhost
+      SQL_PORT: "5432"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar o Poetry
+        run: pip install poetry==2.5.1
+
+      - name: Instalar as dependências
+        run: poetry install --no-root
+
+      - name: Checar o projeto e as migrações
+        run: |
+          poetry run python manage.py check
+          poetry run python manage.py makemigrations --check --dry-run
+
+      - name: Rodar os testes
+        run: poetry run python manage.py test
