@@ -30,6 +30,12 @@ def update_server(request):
 
     repo = git.Repo(os.environ.get("PROJECT_PATH", Path(settings.BASE_DIR)))
     repo.remotes.origin.pull()
+
+    # o PythonAnywhere recarrega a web app quando o arquivo WSGI é modificado
+    wsgi_file = os.environ.get("WSGI_FILE")
+    if wsgi_file and Path(wsgi_file).exists():
+        Path(wsgi_file).touch()
+
     return HttpResponse("Código atualizado no PythonAnywhere")
 
 
