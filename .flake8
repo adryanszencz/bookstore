@@ -1,0 +1,5 @@
+[flake8]
+max-line-length = 120
+exclude = .venv,.git,__pycache__,*/migrations/*
+# os __init__.py só reexportam as classes dos pacotes
+per-file-ignores = __init__.py:F401
